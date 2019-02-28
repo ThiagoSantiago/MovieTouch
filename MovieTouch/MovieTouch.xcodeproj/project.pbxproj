@@ -11,6 +11,8 @@
 		185E93A322284F5100478A03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185E93A222284F5100478A03 /* Assets.xcassets */; };
 		185E93A622284F5100478A03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185E93A422284F5100478A03 /* LaunchScreen.storyboard */; };
 		185E93B122284F5100478A03 /* MovieTouchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E93B022284F5100478A03 /* MovieTouchTests.swift */; };
+		6F4D7AB0348DF6DA21543E40 /* Pods_MovieTouchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16502AA760AD22801BB2F4DB /* Pods_MovieTouchTests.framework */; };
+		9A846BE5676AF363B5F5E906 /* Pods_MovieTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16237AF011CC0D79D3BEA1F /* Pods_MovieTouch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16502AA760AD22801BB2F4DB /* Pods_MovieTouchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieTouchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		185E939822284F4F00478A03 /* MovieTouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185E939B22284F4F00478A03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		185E93A222284F5100478A03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -32,6 +35,11 @@
 		185E93AC22284F5100478A03 /* MovieTouchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieTouchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		185E93B022284F5100478A03 /* MovieTouchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTouchTests.swift; sourceTree = "<group>"; };
 		185E93B222284F5100478A03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B1649F666F9285C4AEF8758 /* Pods-MovieTouch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTouch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTouch/Pods-MovieTouch.debug.xcconfig"; sourceTree = "<group>"; };
+		A91024B6FA1EBA38D5385393 /* Pods-MovieTouch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTouch.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTouch/Pods-MovieTouch.release.xcconfig"; sourceTree = "<group>"; };
+		AE02DC76F960D10CA75903A1 /* Pods-MovieTouchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTouchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTouchTests/Pods-MovieTouchTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B16237AF011CC0D79D3BEA1F /* Pods_MovieTouch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieTouch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C572EAA772EC7C70C1211D44 /* Pods-MovieTouchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTouchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTouchTests/Pods-MovieTouchTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A846BE5676AF363B5F5E906 /* Pods_MovieTouch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,18 +55,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F4D7AB0348DF6DA21543E40 /* Pods_MovieTouchTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D9635D9457C8092C564C18D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1B1649F666F9285C4AEF8758 /* Pods-MovieTouch.debug.xcconfig */,
+				A91024B6FA1EBA38D5385393 /* Pods-MovieTouch.release.xcconfig */,
+				AE02DC76F960D10CA75903A1 /* Pods-MovieTouchTests.debug.xcconfig */,
+				C572EAA772EC7C70C1211D44 /* Pods-MovieTouchTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		185E938F22284F4F00478A03 = {
 			isa = PBXGroup;
 			children = (
 				185E939A22284F4F00478A03 /* MovieTouch */,
 				185E93AF22284F5100478A03 /* MovieTouchTests */,
 				185E939922284F4F00478A03 /* Products */,
+				0D9635D9457C8092C564C18D /* Pods */,
+				F640021B53A038D8954BBADB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +113,15 @@
 			path = MovieTouchTests;
 			sourceTree = "<group>";
 		};
+		F640021B53A038D8954BBADB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B16237AF011CC0D79D3BEA1F /* Pods_MovieTouch.framework */,
+				16502AA760AD22801BB2F4DB /* Pods_MovieTouchTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -97,9 +129,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 185E93B522284F5100478A03 /* Build configuration list for PBXNativeTarget "MovieTouch" */;
 			buildPhases = (
+				DB2D3FAE7D21F6DC018EF227 /* [CP] Check Pods Manifest.lock */,
 				185E939422284F4F00478A03 /* Sources */,
 				185E939522284F4F00478A03 /* Frameworks */,
 				185E939622284F4F00478A03 /* Resources */,
+				A5F7906C6B7F987B60FA9B77 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -114,6 +148,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 185E93B822284F5100478A03 /* Build configuration list for PBXNativeTarget "MovieTouchTests" */;
 			buildPhases = (
+				06980D3CDD61000CE7945A17 /* [CP] Check Pods Manifest.lock */,
 				185E93A822284F5100478A03 /* Sources */,
 				185E93A922284F5100478A03 /* Frameworks */,
 				185E93AA22284F5100478A03 /* Resources */,
@@ -184,6 +219,63 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06980D3CDD61000CE7945A17 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MovieTouchTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5F7906C6B7F987B60FA9B77 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MovieTouch/Pods-MovieTouch-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MovieTouch/Pods-MovieTouch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB2D3FAE7D21F6DC018EF227 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MovieTouch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		185E939422284F4F00478A03 /* Sources */ = {
@@ -342,6 +434,7 @@
 		};
 		185E93B622284F5100478A03 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B1649F666F9285C4AEF8758 /* Pods-MovieTouch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -360,6 +453,7 @@
 		};
 		185E93B722284F5100478A03 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A91024B6FA1EBA38D5385393 /* Pods-MovieTouch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -378,6 +472,7 @@
 		};
 		185E93B922284F5100478A03 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE02DC76F960D10CA75903A1 /* Pods-MovieTouchTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -399,6 +494,7 @@
 		};
 		185E93BA22284F5100478A03 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C572EAA772EC7C70C1211D44 /* Pods-MovieTouchTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
