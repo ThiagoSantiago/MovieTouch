@@ -96,10 +96,11 @@
 		185E939A22284F4F00478A03 /* MovieTouch */ = {
 			isa = PBXGroup;
 			children = (
-				185E939B22284F4F00478A03 /* AppDelegate.swift */,
-				185E93A222284F5100478A03 /* Assets.xcassets */,
-				185E93A422284F5100478A03 /* LaunchScreen.storyboard */,
-				185E93A722284F5100478A03 /* Info.plist */,
+				18615208222857BF008E0B1E /* Common */,
+				1861520A222857D2008E0B1E /* Network */,
+				18615209222857C9008E0B1E /* Router */,
+				1861520B222857DB008E0B1E /* Scenes */,
+				1861520C2228586A008E0B1E /* Supporting Files */,
 			);
 			path = MovieTouch;
 			sourceTree = "<group>";
@@ -111,6 +112,45 @@
 				185E93B222284F5100478A03 /* Info.plist */,
 			);
 			path = MovieTouchTests;
+			sourceTree = "<group>";
+		};
+		18615208222857BF008E0B1E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		18615209222857C9008E0B1E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1861520A222857D2008E0B1E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1861520B222857DB008E0B1E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		1861520C2228586A008E0B1E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				185E939B22284F4F00478A03 /* AppDelegate.swift */,
+				185E93A222284F5100478A03 /* Assets.xcassets */,
+				185E93A422284F5100478A03 /* LaunchScreen.storyboard */,
+				185E93A722284F5100478A03 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F640021B53A038D8954BBADB /* Frameworks */ = {
