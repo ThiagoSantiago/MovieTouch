@@ -17,8 +17,7 @@ protocol MovieTouchApiRequestProtocol {
     func request(_ request: MovieTouchApiSetupProtocol, completion: @escaping (Result<Data>) -> Void)
 }
 
-
-class GitAllStarsApiRequest: MovieTouchApiRequestProtocol {
+class MovieTouchApiRequest: MovieTouchApiRequestProtocol {
     
     func request(_ request: MovieTouchApiSetupProtocol, completion: @escaping (Result<Data>) -> Void) {
         

@@ -11,7 +11,7 @@ import Foundation
 
 enum UpcomingMoviesServiceSetup: MovieTouchApiSetupProtocol {
     
-    case fetchUpcomingMovies(page: String)
+    case fetchUpcomingMovies(page: Int)
     
     var endpoint: String {
         switch self {

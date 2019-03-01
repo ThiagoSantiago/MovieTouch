@@ -11,8 +11,8 @@ import UIKit
 protocol UpcomingMoviesProtocol: class {
     func hideLoadingView()
     func displayLoadingView()
-    func displayError(message: String)
-    func displayUpcomingMovies(list: [String])
+    func displayError(_ message: String)
+    func displayUpcomingMovies(_ list: [UpcomingMoviesViewModel])
 }
 
 class UpcomingMoviesViewController: BaseViewController {
@@ -26,12 +26,24 @@ class UpcomingMoviesViewController: BaseViewController {
     @IBOutlet private weak var tryAgainButton: UIButton!
 
     //MARK: Properties
+    var interactor: UpcomingMoviesInteractor?
+    private var tableViewData: [UpcomingMoviesViewModel] = []
     
     //MARK: Lifecycle
+    init(interactor: UpcomingMoviesInteractor) {
+        super.init(nibName: "UpcomingMoviesViewController", bundle: Bundle.main)
+        self.interactor = interactor
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setup()
+        self.interactor?.getUpcomingMovies()
     }
     
     private func setup() {
@@ -50,17 +62,13 @@ class UpcomingMoviesViewController: BaseViewController {
         self.tryAgainButton.layer.cornerRadius = 25
         self.headerView.setGradient(startColor: Colors.lightBlue.cgColor, finalColor: Colors.darkBlue.cgColor)
     }
-    
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        
-    }
 }
 
 //MARK: UITableViewDelegate / UITableViewDataSource
 extension UpcomingMoviesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.tableViewData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,6 +76,26 @@ extension UpcomingMoviesViewController: UITableViewDelegate, UITableViewDataSour
             return UITableViewCell()
         }
         
+        cell.setContent(movie: tableViewData[indexPath.row])
         return cell
+    }
+}
+
+extension UpcomingMoviesViewController: UpcomingMoviesProtocol {
+    func hideLoadingView() {
+        self.hideLoader()
+    }
+    
+    func displayLoadingView() {
+        self.showLoader()
+    }
+    
+    func displayError(_ message: String) {
+        // impelement the error feedback
+    }
+    
+    func displayUpcomingMovies(_ list: [UpcomingMoviesViewModel]) {
+        self.tableViewData = list
+        self.tableView.reloadData()
     }
 }
