@@ -15,18 +15,22 @@ protocol UpcomingMoviesProtocol: class {
     func displayUpcomingMovies(list: [String])
 }
 
-class UpcomingMoviesViewController: UIViewController {
+class UpcomingMoviesViewController: BaseViewController {
     
     //MARK: Outlets
+    @IBOutlet private weak var auxView: UIView!
+    @IBOutlet private weak var auxImageView: UIImageView!
     @IBOutlet private weak var headerView: UIView!
+    @IBOutlet private weak var auxViewMessage: UILabel!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tryAgainButton: UIButton!
 
     //MARK: Properties
     
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setup()
     }
     
@@ -43,7 +47,12 @@ class UpcomingMoviesViewController: UIViewController {
     }
     
     private func viewsConfiguration() {
+        self.tryAgainButton.layer.cornerRadius = 25
         self.headerView.setGradient(startColor: Colors.lightBlue.cgColor, finalColor: Colors.darkBlue.cgColor)
+    }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        
     }
 }
 
