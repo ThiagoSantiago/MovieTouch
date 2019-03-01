@@ -19,6 +19,11 @@
 		1861521C22289848008E0B1E /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861521B22289848008E0B1E /* UIView+Extensions.swift */; };
 		1861521E2228C65F008E0B1E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861521D2228C65F008E0B1E /* Colors.swift */; };
 		186152202228DE4B008E0B1E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861521F2228DE4B008E0B1E /* BaseViewController.swift */; };
+		1861522222296969008E0B1E /* MovieTouchApiSetupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861522122296969008E0B1E /* MovieTouchApiSetupProtocol.swift */; };
+		1861522422296C2E008E0B1E /* MovieTouchApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861522322296C2E008E0B1E /* MovieTouchApiError.swift */; };
+		1861522622296D38008E0B1E /* MovieTouchApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861522522296D38008E0B1E /* MovieTouchApiRequest.swift */; };
+		1861522822296F4B008E0B1E /* UpcomingMoviesServiceSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861522722296F4B008E0B1E /* UpcomingMoviesServiceSetup.swift */; };
+		1861522A22296FAC008E0B1E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861522922296FAB008E0B1E /* Constants.swift */; };
 		6F4D7AB0348DF6DA21543E40 /* Pods_MovieTouchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16502AA760AD22801BB2F4DB /* Pods_MovieTouchTests.framework */; };
 		9A846BE5676AF363B5F5E906 /* Pods_MovieTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16237AF011CC0D79D3BEA1F /* Pods_MovieTouch.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +56,11 @@
 		1861521B22289848008E0B1E /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		1861521D2228C65F008E0B1E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1861521F2228DE4B008E0B1E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		1861522122296969008E0B1E /* MovieTouchApiSetupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTouchApiSetupProtocol.swift; sourceTree = "<group>"; };
+		1861522322296C2E008E0B1E /* MovieTouchApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTouchApiError.swift; sourceTree = "<group>"; };
+		1861522522296D38008E0B1E /* MovieTouchApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTouchApiRequest.swift; sourceTree = "<group>"; };
+		1861522722296F4B008E0B1E /* UpcomingMoviesServiceSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesServiceSetup.swift; sourceTree = "<group>"; };
+		1861522922296FAB008E0B1E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1B1649F666F9285C4AEF8758 /* Pods-MovieTouch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTouch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTouch/Pods-MovieTouch.debug.xcconfig"; sourceTree = "<group>"; };
 		A91024B6FA1EBA38D5385393 /* Pods-MovieTouch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTouch.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTouch/Pods-MovieTouch.release.xcconfig"; sourceTree = "<group>"; };
 		AE02DC76F960D10CA75903A1 /* Pods-MovieTouchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTouchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTouchTests/Pods-MovieTouchTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +146,7 @@
 				1861521A222897BF008E0B1E /* Extensions */,
 				1861521D2228C65F008E0B1E /* Colors.swift */,
 				1861521F2228DE4B008E0B1E /* BaseViewController.swift */,
+				1861522922296FAB008E0B1E /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -151,6 +162,10 @@
 		1861520A222857D2008E0B1E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1861522122296969008E0B1E /* MovieTouchApiSetupProtocol.swift */,
+				1861522322296C2E008E0B1E /* MovieTouchApiError.swift */,
+				1861522522296D38008E0B1E /* MovieTouchApiRequest.swift */,
+				1861522722296F4B008E0B1E /* UpcomingMoviesServiceSetup.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -383,10 +398,15 @@
 				18615219222864C8008E0B1E /* AppRouter.swift in Sources */,
 				1861521E2228C65F008E0B1E /* Colors.swift in Sources */,
 				186152162228603B008E0B1E /* UpcomingMoviesCell.swift in Sources */,
+				1861522622296D38008E0B1E /* MovieTouchApiRequest.swift in Sources */,
 				1861521C22289848008E0B1E /* UIView+Extensions.swift in Sources */,
 				185E939C22284F4F00478A03 /* AppDelegate.swift in Sources */,
 				186152202228DE4B008E0B1E /* BaseViewController.swift in Sources */,
+				1861522422296C2E008E0B1E /* MovieTouchApiError.swift in Sources */,
+				1861522822296F4B008E0B1E /* UpcomingMoviesServiceSetup.swift in Sources */,
+				1861522222296969008E0B1E /* MovieTouchApiSetupProtocol.swift in Sources */,
 				1861521122285EFE008E0B1E /* UpcomingMoviesViewController.swift in Sources */,
+				1861522A22296FAC008E0B1E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
