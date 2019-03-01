@@ -11,6 +11,13 @@
 		185E93A322284F5100478A03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185E93A222284F5100478A03 /* Assets.xcassets */; };
 		185E93A622284F5100478A03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185E93A422284F5100478A03 /* LaunchScreen.storyboard */; };
 		185E93B122284F5100478A03 /* MovieTouchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E93B022284F5100478A03 /* MovieTouchTests.swift */; };
+		1861521122285EFE008E0B1E /* UpcomingMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861520F22285EFE008E0B1E /* UpcomingMoviesViewController.swift */; };
+		1861521222285EFE008E0B1E /* UpcomingMoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1861521022285EFE008E0B1E /* UpcomingMoviesViewController.xib */; };
+		186152162228603B008E0B1E /* UpcomingMoviesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186152142228603B008E0B1E /* UpcomingMoviesCell.swift */; };
+		186152172228603B008E0B1E /* UpcomingMoviesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186152152228603B008E0B1E /* UpcomingMoviesCell.xib */; };
+		18615219222864C8008E0B1E /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18615218222864C8008E0B1E /* AppRouter.swift */; };
+		1861521C22289848008E0B1E /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861521B22289848008E0B1E /* UIView+Extensions.swift */; };
+		1861521E2228C65F008E0B1E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861521D2228C65F008E0B1E /* Colors.swift */; };
 		6F4D7AB0348DF6DA21543E40 /* Pods_MovieTouchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16502AA760AD22801BB2F4DB /* Pods_MovieTouchTests.framework */; };
 		9A846BE5676AF363B5F5E906 /* Pods_MovieTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16237AF011CC0D79D3BEA1F /* Pods_MovieTouch.framework */; };
 /* End PBXBuildFile section */
@@ -35,6 +42,13 @@
 		185E93AC22284F5100478A03 /* MovieTouchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieTouchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		185E93B022284F5100478A03 /* MovieTouchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTouchTests.swift; sourceTree = "<group>"; };
 		185E93B222284F5100478A03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1861520F22285EFE008E0B1E /* UpcomingMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesViewController.swift; sourceTree = "<group>"; };
+		1861521022285EFE008E0B1E /* UpcomingMoviesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingMoviesViewController.xib; sourceTree = "<group>"; };
+		186152142228603B008E0B1E /* UpcomingMoviesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesCell.swift; sourceTree = "<group>"; };
+		186152152228603B008E0B1E /* UpcomingMoviesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingMoviesCell.xib; sourceTree = "<group>"; };
+		18615218222864C8008E0B1E /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		1861521B22289848008E0B1E /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		1861521D2228C65F008E0B1E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1B1649F666F9285C4AEF8758 /* Pods-MovieTouch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTouch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTouch/Pods-MovieTouch.debug.xcconfig"; sourceTree = "<group>"; };
 		A91024B6FA1EBA38D5385393 /* Pods-MovieTouch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTouch.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTouch/Pods-MovieTouch.release.xcconfig"; sourceTree = "<group>"; };
 		AE02DC76F960D10CA75903A1 /* Pods-MovieTouchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTouchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTouchTests/Pods-MovieTouchTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +131,8 @@
 		18615208222857BF008E0B1E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1861521A222897BF008E0B1E /* Extensions */,
+				1861521D2228C65F008E0B1E /* Colors.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -124,6 +140,7 @@
 		18615209222857C9008E0B1E /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				18615218222864C8008E0B1E /* AppRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -138,6 +155,7 @@
 		1861520B222857DB008E0B1E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				1861520D22285DED008E0B1E /* UpcomingMovies */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -151,6 +169,41 @@
 				185E93A722284F5100478A03 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1861520D22285DED008E0B1E /* UpcomingMovies */ = {
+			isa = PBXGroup;
+			children = (
+				1861520E22285ECF008E0B1E /* Views */,
+			);
+			path = UpcomingMovies;
+			sourceTree = "<group>";
+		};
+		1861520E22285ECF008E0B1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1861520F22285EFE008E0B1E /* UpcomingMoviesViewController.swift */,
+				1861521022285EFE008E0B1E /* UpcomingMoviesViewController.xib */,
+				1861521322286000008E0B1E /* CustomViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1861521322286000008E0B1E /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				186152142228603B008E0B1E /* UpcomingMoviesCell.swift */,
+				186152152228603B008E0B1E /* UpcomingMoviesCell.xib */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		1861521A222897BF008E0B1E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1861521B22289848008E0B1E /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F640021B53A038D8954BBADB /* Frameworks */ = {
@@ -246,6 +299,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				186152172228603B008E0B1E /* UpcomingMoviesCell.xib in Resources */,
+				1861521222285EFE008E0B1E /* UpcomingMoviesViewController.xib in Resources */,
 				185E93A622284F5100478A03 /* LaunchScreen.storyboard in Resources */,
 				185E93A322284F5100478A03 /* Assets.xcassets in Resources */,
 			);
@@ -322,7 +377,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18615219222864C8008E0B1E /* AppRouter.swift in Sources */,
+				1861521E2228C65F008E0B1E /* Colors.swift in Sources */,
+				186152162228603B008E0B1E /* UpcomingMoviesCell.swift in Sources */,
+				1861521C22289848008E0B1E /* UIView+Extensions.swift in Sources */,
 				185E939C22284F4F00478A03 /* AppDelegate.swift in Sources */,
+				1861521122285EFE008E0B1E /* UpcomingMoviesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,7 +539,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C247LTFS54;
-				INFOPLIST_FILE = MovieTouch/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MovieTouch/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -498,7 +558,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C247LTFS54;
-				INFOPLIST_FILE = MovieTouch/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MovieTouch/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
