@@ -9,30 +9,51 @@
 import Foundation
 
 class UpcomingMoviesWorker {
-    let requester: MovieTouchApiRequestProtocol
-    
     typealias Failure = (_ error: MovieTouchApiError) -> Void
-    typealias GetUpcomingMoviesSuccess = (_ repositories: UpcomingMovies) -> Void
     
+    let requester: MovieTouchApiRequestProtocol
+
     init(requester: MovieTouchApiRequestProtocol = MovieTouchApiRequest()) {
         self.requester = requester
     }
     
+    typealias GetUpcomingMoviesSuccess = (_ movies: UpcomingMovies) -> Void
     func getUpcomingMovies(page: Int, success: @escaping GetUpcomingMoviesSuccess, failure: @escaping Failure) {
         
-        requester.request(UpcomingMoviesServiceSetup.fetchUpcomingMovies(page: page)) { (result) in
+        requester.request(UpcomingMoviesServiceSetup.fetchUpcomingMovies(page: page)) { result in
             switch result{
             case let .success(data):
 
                 do {
                     let decoder = JSONDecoder()
-                    let repositoriesList = try decoder.decode(UpcomingMovies.self, from: data)
+                    let moviesList = try decoder.decode(UpcomingMovies.self, from: data)
                     
-                    success(repositoriesList)
+                    success(moviesList)
                 } catch {
                     failure(.couldNotParseObject)
                 }
             case let .failure(error):
+                failure(error)
+            }
+        }
+    }
+    
+    typealias GetGenresSuccess = (_ genres: Genres) -> Void
+    func getMovieGenres(success: @escaping GetGenresSuccess, failure: @escaping Failure) {
+        
+        requester.request(GenreServiceSetup.fetchMoviesGenre()) { result in
+            switch result {
+            case let .success(data):
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let genresList = try decoder.decode(Genres.self, from: data)
+                    
+                    success(genresList)
+                } catch {
+                    failure(.couldNotParseObject)
+                }
+            case let .failure(error) :
                 failure(error)
             }
         }

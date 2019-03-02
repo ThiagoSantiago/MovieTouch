@@ -9,6 +9,7 @@
 import Foundation
 
 protocol UpcomingMoviesInteractorProtocol {
+    func getGenres()
     func getUpcomingMovies()
     func getNextUpcomingMovie()
 }
@@ -17,6 +18,7 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
     private var presenter: UpcomingMoviesPresenterProtocol?
     private var worker: UpcomingMoviesWorker?
     private var upcomingMoviesData: [Movie] = []
+    private var genres:[Int:String] = [:]
     private var isWaitingResponse: Bool = false
     private var currentPage: Int = 0
     private var totalPages: Int = 0
@@ -26,23 +28,37 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
         self.worker = worker
     }
     
+    func getGenres() {
+        worker?.getMovieGenres(success: { result in
+            self.genres = result.genres.reduce([Int:String](), { (dict, genre) -> [Int: String] in
+                var dict = dict
+                dict[genre.id] = genre.name
+                return dict
+            })
+        }, failure: { error in
+            print("ERROR: \(error.localizedDescription)")
+        })
+    }
+    
     func getUpcomingMovies() {
         currentPage = 1
         presenter?.presentLoadingView()
-        worker?.getUpcomingMovies(page: currentPage, success: { result in
-            
-            self.totalPages = result.totalPages
-            self.upcomingMoviesData.append(contentsOf: result.movies)
-            let viewModel = self.treatUpcomingMoviesData(movies: result.movies)
-            self.presenter?.closeLoadingView()
-            self.presenter?.presentUpcomingMovies(movies: viewModel)
-            
-        }, failure: { error in
-            
-            self.presenter?.closeLoadingView()
-            self.presenter?.presentError(message: error.localizedDescription)
-            
-        })
+        if verifyGenres() {
+            worker?.getUpcomingMovies(page: currentPage, success: { result in
+                self.totalPages = result.totalPages
+                self.upcomingMoviesData.append(contentsOf: result.movies)
+                let viewModel = self.treatUpcomingMoviesData(movies: result.movies)
+                self.presenter?.closeLoadingView()
+                self.presenter?.presentUpcomingMovies(movies: viewModel)
+            }, failure: { error in
+                self.presenter?.closeLoadingView()
+                self.presenter?.presentError(message: error.localizedDescription)
+            })
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                self.getUpcomingMovies()
+            })
+        }
     }
     
     func getNextUpcomingMovie() {
@@ -59,18 +75,36 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
                     self.presenter?.presentUpcomingMovies(movies: viewModel)
                 }, failure: { error in
                     self.isWaitingResponse = false
-                    self.presenter?.closeLoadingView()
+                    self.presenter?.closeFooterLoading()
                     self.presenter?.presentError(message: error.localizedDescription)
                 })
             }
         }
     }
     
+    private func verifyGenres() ->  Bool {
+        if self.genres.isEmpty {
+            self.getGenres()
+            return false
+        } else {
+            return true
+        }
+    }
+    
     private func treatUpcomingMoviesData(movies: [Movie]) -> [UpcomingMoviesViewModel] {
         
-        return movies.map { UpcomingMoviesViewModel(genreIds: $0.genreIDS,
+        return movies.map { UpcomingMoviesViewModel(genres: convertGenresToString(genresIds: $0.genreIDS),
                                                     poster: $0.posterPath,
                                                     backdrop: $0.backdropPath ?? "",                                                    movieName: $0.title,
                                                     releaseDate: $0.releaseDate.formatString())}
+    }
+    
+    private func convertGenresToString(genresIds: [Int]) -> String{
+        return genresIds.reduce(String(),
+                      { (genresString, genreId) -> String in
+                        var genresString = genresString
+                        genresString.append(contentsOf: " "+(self.genres[genreId] ?? "")+" |" )
+                        
+                        return genresString})
     }
 }

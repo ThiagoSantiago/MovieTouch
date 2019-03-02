@@ -11,6 +11,9 @@
 		1801B9262229D7BB006F7557 /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801B9252229D7BB006F7557 /* NSMutableAttributedString+Extensions.swift */; };
 		1801B928222A046D006F7557 /* FooterLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801B927222A046D006F7557 /* FooterLoaderView.swift */; };
 		1801B92A222A04C6006F7557 /* FooterLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1801B929222A04C6006F7557 /* FooterLoaderView.xib */; };
+		1801B92C222A2389006F7557 /* GenreServiceSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801B92B222A2389006F7557 /* GenreServiceSetup.swift */; };
+		1801B92E222A264E006F7557 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801B92D222A264E006F7557 /* Genres.swift */; };
+		1801B930222A269D006F7557 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801B92F222A269D006F7557 /* Genre.swift */; };
 		185E939C22284F4F00478A03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E939B22284F4F00478A03 /* AppDelegate.swift */; };
 		185E93A322284F5100478A03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185E93A222284F5100478A03 /* Assets.xcassets */; };
 		185E93A622284F5100478A03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185E93A422284F5100478A03 /* LaunchScreen.storyboard */; };
@@ -54,6 +57,9 @@
 		1801B9252229D7BB006F7557 /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		1801B927222A046D006F7557 /* FooterLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterLoaderView.swift; sourceTree = "<group>"; };
 		1801B929222A04C6006F7557 /* FooterLoaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterLoaderView.xib; sourceTree = "<group>"; };
+		1801B92B222A2389006F7557 /* GenreServiceSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreServiceSetup.swift; sourceTree = "<group>"; };
+		1801B92D222A264E006F7557 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
+		1801B92F222A269D006F7557 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		185E939822284F4F00478A03 /* MovieTouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185E939B22284F4F00478A03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		185E93A222284F5100478A03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -187,6 +193,7 @@
 				1861522322296C2E008E0B1E /* MovieTouchApiError.swift */,
 				1861522522296D38008E0B1E /* MovieTouchApiRequest.swift */,
 				1861522722296F4B008E0B1E /* UpcomingMoviesServiceSetup.swift */,
+				1801B92B222A2389006F7557 /* GenreServiceSetup.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -274,6 +281,8 @@
 				1861523722299BE1008E0B1E /* Movie.swift */,
 				18615235222998D3008E0B1E /* UpcomingMovies.swift */,
 				186152392229A4B1008E0B1E /* ViewModel */,
+				1801B92D222A264E006F7557 /* Genres.swift */,
+				1801B92F222A269D006F7557 /* Genre.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -469,16 +478,19 @@
 				1801B928222A046D006F7557 /* FooterLoaderView.swift in Sources */,
 				186152342229925F008E0B1E /* UpcomingMoviesWorker.swift in Sources */,
 				18615219222864C8008E0B1E /* AppRouter.swift in Sources */,
+				1801B92C222A2389006F7557 /* GenreServiceSetup.swift in Sources */,
 				1861521E2228C65F008E0B1E /* Colors.swift in Sources */,
 				186152162228603B008E0B1E /* UpcomingMoviesCell.swift in Sources */,
 				18615236222998D3008E0B1E /* UpcomingMovies.swift in Sources */,
 				18615231222974B6008E0B1E /* UpcomingMoviesPresenter.swift in Sources */,
+				1801B92E222A264E006F7557 /* Genres.swift in Sources */,
 				1861522622296D38008E0B1E /* MovieTouchApiRequest.swift in Sources */,
 				1861522F222973C4008E0B1E /* UpcomingMoviesInteractor.swift in Sources */,
 				1801B9262229D7BB006F7557 /* NSMutableAttributedString+Extensions.swift in Sources */,
 				1861521C22289848008E0B1E /* UIView+Extensions.swift in Sources */,
 				185E939C22284F4F00478A03 /* AppDelegate.swift in Sources */,
 				186152202228DE4B008E0B1E /* BaseViewController.swift in Sources */,
+				1801B930222A269D006F7557 /* Genre.swift in Sources */,
 				1861522422296C2E008E0B1E /* MovieTouchApiError.swift in Sources */,
 				1861522822296F4B008E0B1E /* UpcomingMoviesServiceSetup.swift in Sources */,
 				1801B9242229D056006F7557 /* String+Extensions.swift in Sources */,

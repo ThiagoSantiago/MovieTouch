@@ -9,7 +9,7 @@
 import Foundation
 
 struct UpcomingMoviesViewModel {
-    let genreIds: [Int]
+    let genres: String
     let poster: String
     let backdrop: String
     let movieName: String
@@ -18,7 +18,7 @@ struct UpcomingMoviesViewModel {
 
 extension UpcomingMoviesViewModel: Equatable {
     static func ==(lhs: UpcomingMoviesViewModel, rhs: UpcomingMoviesViewModel) -> Bool {
-        return lhs.genreIds == rhs.genreIds &&
+        return lhs.genres == rhs.genres &&
             lhs.poster == rhs.poster &&
             lhs.backdrop == rhs.backdrop &&
             lhs.movieName == rhs.movieName &&

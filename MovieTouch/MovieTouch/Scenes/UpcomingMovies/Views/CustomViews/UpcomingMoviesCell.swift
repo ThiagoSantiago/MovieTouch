@@ -36,7 +36,7 @@ class UpcomingMoviesCell: UITableViewCell {
         self.movieName.text = movie.movieName
         
         let genreFormatted = NSMutableAttributedString()
-        genreFormatted.bold("Gênero: ").normal("")
+        genreFormatted.bold("Gênero:").normal(movie.genres)
         self.movieGenre.attributedText = genreFormatted
         
         let releaseDateFormatted = NSMutableAttributedString()
