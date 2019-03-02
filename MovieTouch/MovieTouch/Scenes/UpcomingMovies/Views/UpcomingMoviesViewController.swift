@@ -141,10 +141,17 @@ extension UpcomingMoviesViewController: UpcomingMoviesProtocol {
     }
     
     func displayError(_ message: String) {
-        // impelement the error feedback
+        self.auxView.isHidden = false
+        self.tableView.isHidden = true
+        
+        self.auxImageView.image = UIImage(named: "error_icon")
+        self.auxViewMessage.text = message
     }
     
     func displayUpcomingMovies(_ list: [UpcomingMoviesViewModel]) {
+        self.auxView.isHidden = true
+        self.tableView.isHidden = false
+        
         self.tableViewData = list
         self.tableView.reloadData()
     }

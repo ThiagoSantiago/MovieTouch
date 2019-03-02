@@ -10,35 +10,32 @@ import Foundation
 
 
 protocol UpcomingMoviesPresenterProtocol {
-    func closeLoadingView()
-    func presentLoadingView()
-    func closeFooterLoading()
-    func presentFooterLoading()
     func presentError(message: String)
+    func closeLoadingView(isNextPage: Bool)
+    func presentLoadingView(isNextPage: Bool)
     func presentUpcomingMovies(movies: [UpcomingMoviesViewModel])
 }
 
 class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
     weak var viewController: UpcomingMoviesProtocol?
     
-    func closeLoadingView() {
+    func closeLoadingView(isNextPage: Bool = false) {
         DispatchQueue.main.async {
-            self.viewController?.hideLoadingView()
+            if isNextPage {
+                self.viewController?.hideFooterLoading()
+            } else {
+                self.viewController?.hideLoadingView()
+            }
         }
     }
     
-    func presentLoadingView() {
-        viewController?.displayLoadingView()
-    }
-    
-    func closeFooterLoading() {
-        DispatchQueue.main.async {
-            self.viewController?.hideFooterLoading()
+    func presentLoadingView(isNextPage: Bool = false) {
+        if isNextPage {
+            viewController?.displayFooterLoading()
+        } else {
+            viewController?.displayLoadingView()
         }
-    }
-    
-    func presentFooterLoading() {
-        viewController?.displayFooterLoading()
+        
     }
     
     func presentError(message: String) {

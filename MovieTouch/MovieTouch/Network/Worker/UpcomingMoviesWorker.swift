@@ -61,8 +61,12 @@ class UpcomingMoviesWorker {
     
     typealias SearchMoviesSuccess = (_ movies: UpcomingMovies) -> Void
     func searchMovies(text: String, page: Int, success: @escaping SearchMoviesSuccess, failure: @escaping Failure) {
+        guard let urlString = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            failure(.unknown("Can't convert the text."))
+            return
+        }
         
-        requester.request(SearchMovieServiceSetup.searchMovies(text: text, page: page)) { result in
+        requester.request(SearchMovieServiceSetup.searchMovies(text: urlString, page: page)) { result in
             switch result {
                 
             case let .success(data):
