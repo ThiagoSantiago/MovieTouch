@@ -17,7 +17,7 @@ enum UpcomingMoviesServiceSetup: MovieTouchApiSetupProtocol {
         switch self {
             
         case .fetchUpcomingMovies(let page):
-            let url = Constants.baseUrl + "/movie/upcoming?api_key=\(Constants.apiKey)&language=pt-BR&page=\(page)"
+            let url = Constants.baseUrl + "/movie/upcoming?api_key=\(Constants.apiKey)&language=en-US&page=\(page)"
             
             return url
         }

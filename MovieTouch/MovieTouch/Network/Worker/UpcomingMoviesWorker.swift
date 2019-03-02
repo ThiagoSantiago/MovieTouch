@@ -58,4 +58,26 @@ class UpcomingMoviesWorker {
             }
         }
     }
+    
+    typealias SearchMoviesSuccess = (_ movies: UpcomingMovies) -> Void
+    func searchMovies(text: String, page: Int, success: @escaping SearchMoviesSuccess, failure: @escaping Failure) {
+        
+        requester.request(SearchMovieServiceSetup.searchMovies(text: text, page: page)) { result in
+            switch result {
+                
+            case let .success(data):
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let moviesList = try decoder.decode(UpcomingMovies.self, from: data)
+                    
+                    success(moviesList)
+                } catch {
+                    failure(.couldNotParseObject)
+                }
+            case let .failure(error):
+                failure(error)
+            }
+        }
+    }
 }

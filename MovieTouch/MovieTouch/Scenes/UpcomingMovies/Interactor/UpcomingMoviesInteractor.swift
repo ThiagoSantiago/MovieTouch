@@ -17,11 +17,19 @@ protocol UpcomingMoviesInteractorProtocol {
 class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
     private var presenter: UpcomingMoviesPresenterProtocol?
     private var worker: UpcomingMoviesWorker?
+    
     private var upcomingMoviesData: [Movie] = []
     private var genres:[Int:String] = [:]
     private var isWaitingResponse: Bool = false
+    
     private var currentPage: Int = 0
     private var totalPages: Int = 0
+    
+    private var filteredMoviesData: [Movie] = []
+    private var currentFilteredPage: Int = 0
+    private var totalFilteredPages: Int = 0
+    private var isSearching: Bool = false
+    private var textToSearch: String = ""
     
     init(presenter: UpcomingMoviesPresenterProtocol, worker: UpcomingMoviesWorker = UpcomingMoviesWorker()) {
         self.presenter = presenter
@@ -36,7 +44,8 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
                 return dict
             })
         }, failure: { error in
-            print("ERROR: \(error.localizedDescription)")
+            self.presenter?.closeLoadingView()
+            self.presenter?.presentError(message: error.localizedDescription)
         })
     }
     
@@ -62,16 +71,60 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
     }
     
     func getNextUpcomingMovie() {
+        if isSearching {
+            nextFilteredPage()
+        } else {
+            if !isWaitingResponse {
+                currentPage += 1
+                if currentPage <= totalPages {
+                    isWaitingResponse = true
+                    presenter?.presentFooterLoading()
+                    worker?.getUpcomingMovies(page: currentPage, success: { result in
+                        self.isWaitingResponse = false
+                        self.presenter?.closeFooterLoading()
+                        self.upcomingMoviesData.append(contentsOf: result.movies)
+                        let viewModel = self.treatUpcomingMoviesData(movies: self.upcomingMoviesData)
+                        self.presenter?.presentUpcomingMovies(movies: viewModel)
+                    }, failure: { error in
+                        self.isWaitingResponse = false
+                        self.presenter?.closeFooterLoading()
+                        self.presenter?.presentError(message: error.localizedDescription)
+                    })
+                }
+            }
+        }
+        
+    }
+    
+    func searchMovies(text: String) {
+        isSearching = true
+        textToSearch = text
+        currentFilteredPage += 1
+        
+        presenter?.presentLoadingView()
+        worker?.searchMovies(text: text, page: currentFilteredPage, success: { result in
+            self.totalFilteredPages = result.totalPages
+            self.filteredMoviesData.append(contentsOf: result.movies)
+            let viewModel = self.treatUpcomingMoviesData(movies: result.movies)
+            self.presenter?.closeLoadingView()
+            self.presenter?.presentUpcomingMovies(movies: viewModel)
+        }, failure: { error in
+            self.presenter?.closeLoadingView()
+            self.presenter?.presentError(message: error.localizedDescription)
+        })
+    }
+    
+    func nextFilteredPage() {
         if !isWaitingResponse {
-            currentPage += 1
-            if currentPage <= totalPages {
+            currentFilteredPage += 1
+            if currentFilteredPage <= totalFilteredPages {
                 isWaitingResponse = true
                 presenter?.presentFooterLoading()
-                worker?.getUpcomingMovies(page: currentPage, success: { result in
+                worker?.searchMovies(text: textToSearch, page: currentFilteredPage, success: { result in
                     self.isWaitingResponse = false
                     self.presenter?.closeFooterLoading()
-                    self.upcomingMoviesData.append(contentsOf: result.movies)
-                    let viewModel = self.treatUpcomingMoviesData(movies: self.upcomingMoviesData)
+                    self.filteredMoviesData.append(contentsOf: result.movies)
+                    let viewModel = self.treatUpcomingMoviesData(movies: self.filteredMoviesData)
                     self.presenter?.presentUpcomingMovies(movies: viewModel)
                 }, failure: { error in
                     self.isWaitingResponse = false
@@ -80,6 +133,12 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
                 })
             }
         }
+    }
+    
+    func cancelSearch() {
+        self.isSearching = false
+        let viewModel = self.treatUpcomingMoviesData(movies: self.upcomingMoviesData)
+        self.presenter?.presentUpcomingMovies(movies: viewModel)
     }
     
     private func verifyGenres() ->  Bool {

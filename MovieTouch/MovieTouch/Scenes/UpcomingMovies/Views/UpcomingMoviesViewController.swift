@@ -20,6 +20,7 @@ protocol UpcomingMoviesProtocol: class {
 class UpcomingMoviesViewController: BaseViewController {
     
     //MARK: Outlets
+    @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var auxView: UIView!
     @IBOutlet private weak var auxImageView: UIImageView!
     @IBOutlet private weak var headerView: UIView!
@@ -50,6 +51,7 @@ class UpcomingMoviesViewController: BaseViewController {
     }
     
     private func setup() {
+        self.searchBar.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -92,6 +94,34 @@ extension UpcomingMoviesViewController: UITableViewDelegate, UITableViewDataSour
     }
 }
 
+//MARK: UISearchBarDelegate
+extension UpcomingMoviesViewController: UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        interactor?.cancelSearch()
+        self.tableView.reloadData()
+        self.searchBar.text = ""
+        self.searchBar.resignFirstResponder()
+        let indexPath = NSIndexPath(item: 0, section: 0)
+        self.tableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.middle, animated: true)
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+        guard let textToSearch = searchBar.text else { return }
+        let trimmedString = textToSearch.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !(trimmedString == "") {
+            interactor?.searchMovies(text: textToSearch)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //
+    }
+}
+
+//MARK: UpcomingMoviesProtocol
 extension UpcomingMoviesViewController: UpcomingMoviesProtocol {
     
     func hideLoadingView() {

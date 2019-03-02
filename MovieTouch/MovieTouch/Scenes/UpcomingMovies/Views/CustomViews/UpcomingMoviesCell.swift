@@ -36,11 +36,11 @@ class UpcomingMoviesCell: UITableViewCell {
         self.movieName.text = movie.movieName
         
         let genreFormatted = NSMutableAttributedString()
-        genreFormatted.bold("Gênero:").normal(movie.genres)
+        genreFormatted.bold("Genre:").normal(movie.genres)
         self.movieGenre.attributedText = genreFormatted
         
         let releaseDateFormatted = NSMutableAttributedString()
-        releaseDateFormatted.bold("Lançamento: ").normal(movie.releaseDate)
+        releaseDateFormatted.bold("Release date: ").normal(movie.releaseDate)
         self.movieReleaseDate.attributedText = releaseDateFormatted
         
         self.movieImage.sd_setImage(with: URL(string: "\(Constants.imageBaseUrl)\(movie.poster)"), placeholderImage: UIImage(named: "poster_placeholder"))

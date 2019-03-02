@@ -16,7 +16,7 @@ enum GenreServiceSetup: MovieTouchApiSetupProtocol {
         switch self {
             
         case .fetchMoviesGenre():
-            let url = Constants.baseUrl + "/genre/movie/list?api_key=\(Constants.apiKey)&language=pt-BR"
+            let url = Constants.baseUrl + "/genre/movie/list?api_key=\(Constants.apiKey)&language=en-US"
             
             return url
         }
