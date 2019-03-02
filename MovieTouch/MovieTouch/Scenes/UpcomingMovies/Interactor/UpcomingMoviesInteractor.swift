@@ -153,7 +153,7 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
     private func treatUpcomingMoviesData(movies: [Movie]) -> [UpcomingMoviesViewModel] {
         
         return movies.map { UpcomingMoviesViewModel(genres: convertGenresToString(genresIds: $0.genreIDS),
-                                                    poster: $0.posterPath,
+                                                    poster: $0.posterPath ?? "",
                                                     backdrop: $0.backdropPath ?? "",                                                    movieName: $0.title,
                                                     releaseDate: $0.releaseDate.formatString())}
     }

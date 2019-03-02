@@ -15,7 +15,7 @@ struct Movie {
     let voteAverage: Double
     let title: String
     let popularity: Double
-    let posterPath: String
+    let posterPath: String?
     let originalTitle: String
     let genreIDS: [Int]
     let backdropPath: String?
@@ -53,7 +53,7 @@ extension Movie: Decodable {
         popularity = try values.decode(Double.self, forKey: .popularity)
         voteCount = try values.decode(Int.self, forKey: .voteCount)
         voteAverage = try values.decode(Double.self, forKey: .voteAverage)
-        posterPath = try values.decode(String.self, forKey: .posterPath)
+        posterPath = try? values.decode(String.self, forKey: .posterPath)
         originalTitle = try values.decode(String.self, forKey: .originalTitle)
         genreIDS = try values.decode([Int].self, forKey: .genreIDS)
         backdropPath = try? values.decode(String.self, forKey: .backdropPath)
