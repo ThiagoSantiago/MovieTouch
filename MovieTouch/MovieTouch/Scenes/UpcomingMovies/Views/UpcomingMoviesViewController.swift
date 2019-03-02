@@ -10,7 +10,9 @@ import UIKit
 
 protocol UpcomingMoviesProtocol: class {
     func hideLoadingView()
+    func hideFooterLoading()
     func displayLoadingView()
+    func displayFooterLoading()
     func displayError(_ message: String)
     func displayUpcomingMovies(_ list: [UpcomingMoviesViewModel])
 }
@@ -26,6 +28,7 @@ class UpcomingMoviesViewController: BaseViewController {
     @IBOutlet private weak var tryAgainButton: UIButton!
 
     //MARK: Properties
+    private var footer: FooterLoaderView?
     var interactor: UpcomingMoviesInteractor?
     private var tableViewData: [UpcomingMoviesViewModel] = []
     
@@ -61,6 +64,8 @@ class UpcomingMoviesViewController: BaseViewController {
     private func viewsConfiguration() {
         self.tryAgainButton.layer.cornerRadius = 25
         self.headerView.setGradient(startColor: Colors.lightBlue.cgColor, finalColor: Colors.darkBlue.cgColor)
+        self.footer = FooterLoaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        self.tableView.tableFooterView = footer
     }
 }
 
@@ -79,15 +84,30 @@ extension UpcomingMoviesViewController: UITableViewDelegate, UITableViewDataSour
         cell.setContent(movie: tableViewData[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == self.tableViewData.count - 1 {
+            self.interactor?.getNextUpcomingMovie()
+        }
+    }
 }
 
 extension UpcomingMoviesViewController: UpcomingMoviesProtocol {
+    
     func hideLoadingView() {
         self.hideLoader()
     }
     
+    func hideFooterLoading() {
+        footer?.hide()
+    }
+    
     func displayLoadingView() {
         self.showLoader()
+    }
+    
+    func displayFooterLoading() {
+        footer?.show()
     }
     
     func displayError(_ message: String) {

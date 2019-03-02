@@ -18,7 +18,7 @@ class UpcomingMoviesWorker {
         self.requester = requester
     }
     
-    func getUpcomingMovies(page: Int = 1, success: @escaping GetUpcomingMoviesSuccess, failure: @escaping Failure) {
+    func getUpcomingMovies(page: Int, success: @escaping GetUpcomingMoviesSuccess, failure: @escaping Failure) {
         
         requester.request(UpcomingMoviesServiceSetup.fetchUpcomingMovies(page: page)) { (result) in
             switch result{

@@ -12,23 +12,40 @@ import Foundation
 protocol UpcomingMoviesPresenterProtocol {
     func closeLoadingView()
     func presentLoadingView()
+    func closeFooterLoading()
+    func presentFooterLoading()
     func presentError(message: String)
     func presentUpcomingMovies(movies: [UpcomingMoviesViewModel])
 }
 
 class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
-    var viewController: UpcomingMoviesProtocol?
+    weak var viewController: UpcomingMoviesProtocol?
     
     func closeLoadingView() {
-        viewController?.hideLoadingView()
+        DispatchQueue.main.async {
+            self.viewController?.hideLoadingView()
+        }
     }
     
     func presentLoadingView() {
         viewController?.displayLoadingView()
     }
     
+    func closeFooterLoading() {
+        DispatchQueue.main.async {
+            self.viewController?.hideFooterLoading()
+        }
+    }
+    
+    func presentFooterLoading() {
+        viewController?.displayFooterLoading()
+    }
+    
     func presentError(message: String) {
-        viewController?.displayError(message)
+        DispatchQueue.main.async {
+            self.viewController?.displayError(message)
+        }
+        
     }
     
     func presentUpcomingMovies(movies: [UpcomingMoviesViewModel]) {

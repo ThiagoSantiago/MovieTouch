@@ -18,7 +18,7 @@ struct Movie {
     let posterPath: String
     let originalTitle: String
     let genreIDS: [Int]
-    let backdropPath: String
+    let backdropPath: String?
     let adult: Bool
     let overview: String
     let releaseDate: String
@@ -56,7 +56,7 @@ extension Movie: Decodable {
         posterPath = try values.decode(String.self, forKey: .posterPath)
         originalTitle = try values.decode(String.self, forKey: .originalTitle)
         genreIDS = try values.decode([Int].self, forKey: .genreIDS)
-        backdropPath = try values.decode(String.self, forKey: .backdropPath)
+        backdropPath = try? values.decode(String.self, forKey: .backdropPath)
         releaseDate = try values.decode(String.self, forKey: .releaseDate)
     }
 }
