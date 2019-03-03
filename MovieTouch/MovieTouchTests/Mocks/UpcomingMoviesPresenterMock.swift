@@ -34,7 +34,7 @@ class UpcomingMoviesPresenterMock: UpcomingMoviesPresenter {
         }
     }
     
-    override func presentError(message: String) {
+    override func presentError(message: String, isSearching: Bool) {
         errorWasPresented = true
     }
     
