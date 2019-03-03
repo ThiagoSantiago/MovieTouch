@@ -11,8 +11,9 @@ import UIKit
 extension UIView {
     
     func setGradient(startColor: CGColor, finalColor: CGColor) {
+        self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         let backgroundLayer = CAGradientLayer()
-        backgroundLayer.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        backgroundLayer.frame = self.bounds
         let gradientColors: [AnyObject] = [startColor, finalColor]
         backgroundLayer.colors = gradientColors
         backgroundLayer.startPoint = CGPoint(x: 0.0, y: 0.0)

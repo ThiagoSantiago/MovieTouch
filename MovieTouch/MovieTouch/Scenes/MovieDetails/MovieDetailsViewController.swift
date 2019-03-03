@@ -28,6 +28,15 @@ class MovieDetailsViewController: UIViewController {
         setContent()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+            self.headerView.layer.sublayers?.forEach {
+                if $0.isKind(of: CAGradientLayer.self) {
+                    $0.frame = CGRect(x: 0, y: 0, width: 896.0, height: self.headerView.bounds.height)
+                }
+            }
+    }
+    
     private func configViews() {
         self.moviePoster.layer.cornerRadius = 8
         self.movieBackdrop.layer.cornerRadius = 8

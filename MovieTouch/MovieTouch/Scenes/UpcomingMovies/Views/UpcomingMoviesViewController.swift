@@ -50,6 +50,14 @@ class UpcomingMoviesViewController: BaseViewController {
         self.interactor?.getUpcomingMovies()
     }
     
+    override func viewDidLayoutSubviews() {
+        self.headerView.layer.sublayers?.forEach {
+            if $0.isKind(of: CAGradientLayer.self) {
+                $0.frame = self.headerView.layer.bounds
+            }
+        }
+    }
+    
     private func setup() {
         self.searchBar.delegate = self
         self.tableView.delegate = self
@@ -123,10 +131,6 @@ extension UpcomingMoviesViewController: UISearchBarDelegate {
         if !(trimmedString == "") {
             interactor?.searchMovies(text: textToSearch)
         }
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //
     }
 }
 
