@@ -53,6 +53,7 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
         presenter?.presentLoadingView(isNextPage: isNextPage)
         if verifyGenres() {
             worker?.getUpcomingMovies(page: currentPage, success: { result in
+                self.cacheData = (page: result.page, totalPages: result.totalPages, movies: result.movies)
                 self.manageSuccess(with: result)
             }, failure: { error in
                 self.manageError(with: error)

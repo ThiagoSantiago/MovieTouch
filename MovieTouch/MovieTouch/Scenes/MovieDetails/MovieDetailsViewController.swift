@@ -20,6 +20,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet private weak var overview: UILabel!
 
     var movie: UpcomingMoviesViewModel?
+    var gradientFrame = CGRect.zero
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +29,21 @@ class MovieDetailsViewController: UIViewController {
         setContent()
     }
     
+    override func viewDidLayoutSubviews() {
+        self.headerView.layer.sublayers?.forEach {
+            if $0.isKind(of: CAGradientLayer.self) {
+                $0.frame = gradientFrame
+            }
+        }
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-            self.headerView.layer.sublayers?.forEach {
-                if $0.isKind(of: CAGradientLayer.self) {
-                    $0.frame = CGRect(x: 0, y: 0, width: 896.0, height: self.headerView.bounds.height)
-                }
-            }
+        if UIDevice.current.orientation.isLandscape {
+            gradientFrame = CGRect(x: 0, y: 0, width: 896.0, height: self.headerView.bounds.height)
+        } else {
+            gradientFrame = CGRect(x: 0, y: 0, width: 414.0, height: self.headerView.bounds.height)
+        }
     }
     
     private func configViews() {
@@ -42,6 +51,17 @@ class MovieDetailsViewController: UIViewController {
         self.movieBackdrop.layer.cornerRadius = 8
         
         self.headerView.setGradient(startColor: Colors.lightBlue.cgColor, finalColor: Colors.darkBlue.cgColor)
+        verifyDeviceOrientation()
+    }
+    
+    private func verifyDeviceOrientation() {
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft ||
+            UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            gradientFrame = CGRect(x: 0, y: 0, width: 896.0, height: self.headerView.bounds.height)
+        } else if UIDevice.current.orientation == UIDeviceOrientation.portrait ||
+            UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown {
+            gradientFrame = CGRect(x: 0, y: 0, width: 414.0, height: self.headerView.bounds.height)
+        }
     }
     
     private func setContent() {
