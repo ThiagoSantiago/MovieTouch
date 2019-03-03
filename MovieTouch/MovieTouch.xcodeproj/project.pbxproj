@@ -23,6 +23,7 @@
 		18387885222B1EAC00F1A30C /* searched_movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 18387884222B1EAC00F1A30C /* searched_movies.json */; };
 		18387887222B4A8200F1A30C /* UpcomingMoviesInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18387886222B4A8200F1A30C /* UpcomingMoviesInteractorTests.swift */; };
 		18387889222B4F6A00F1A30C /* UpcomingMoviesPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18387888222B4F6A00F1A30C /* UpcomingMoviesPresenterMock.swift */; };
+		18480765222B7FB7003ABDE3 /* AppRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18480764222B7FB7003ABDE3 /* AppRouterTests.swift */; };
 		185E939C22284F4F00478A03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E939B22284F4F00478A03 /* AppDelegate.swift */; };
 		185E93A322284F5100478A03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185E93A222284F5100478A03 /* Assets.xcassets */; };
 		185E93A622284F5100478A03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185E93A422284F5100478A03 /* LaunchScreen.storyboard */; };
@@ -77,6 +78,7 @@
 		18387884222B1EAC00F1A30C /* searched_movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = searched_movies.json; sourceTree = "<group>"; };
 		18387886222B4A8200F1A30C /* UpcomingMoviesInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesInteractorTests.swift; sourceTree = "<group>"; };
 		18387888222B4F6A00F1A30C /* UpcomingMoviesPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesPresenterMock.swift; sourceTree = "<group>"; };
+		18480764222B7FB7003ABDE3 /* AppRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterTests.swift; sourceTree = "<group>"; };
 		185E939822284F4F00478A03 /* MovieTouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185E939B22284F4F00478A03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		185E93A222284F5100478A03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				18387877222ABE7400F1A30C /* UpcomingMoviesWorkerTests.swift */,
 				18387876222ABE3D00F1A30C /* Mocks */,
 				185E93B222284F5100478A03 /* Info.plist */,
+				18480764222B7FB7003ABDE3 /* AppRouterTests.swift */,
 			);
 			path = MovieTouchTests;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18480765222B7FB7003ABDE3 /* AppRouterTests.swift in Sources */,
 				18387887222B4A8200F1A30C /* UpcomingMoviesInteractorTests.swift in Sources */,
 				18387889222B4F6A00F1A30C /* UpcomingMoviesPresenterMock.swift in Sources */,
 				18387878222ABE7400F1A30C /* UpcomingMoviesWorkerTests.swift in Sources */,
