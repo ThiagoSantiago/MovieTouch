@@ -12,6 +12,7 @@ struct UpcomingMoviesViewModel {
     let genres: String
     let poster: String
     let backdrop: String
+    let overview: String
     let movieName: String
     let releaseDate: String
 }
@@ -21,6 +22,7 @@ extension UpcomingMoviesViewModel: Equatable {
         return lhs.genres == rhs.genres &&
             lhs.poster == rhs.poster &&
             lhs.backdrop == rhs.backdrop &&
+            lhs.overview == rhs.overview &&
             lhs.movieName == rhs.movieName &&
             lhs.releaseDate == rhs.releaseDate
     }

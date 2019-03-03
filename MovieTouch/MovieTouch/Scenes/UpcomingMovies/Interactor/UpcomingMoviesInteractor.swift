@@ -149,7 +149,7 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
     
     private func manageError(with error: MovieTouchApiError) {
         self.presenter?.closeLoadingView(isNextPage: isNextPage)
-        self.presenter?.presentError(message: error.localizedDescription)
+        self.presenter?.presentError(message: error.localizedDescription, isSearching: isSearching)
     }
     
     private func startSearching() {
@@ -168,7 +168,8 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
         
         return movies.map { UpcomingMoviesViewModel(genres: convertGenresToString(genresIds: $0.genreIDS),
                                                     poster: $0.posterPath ?? "",
-                                                    backdrop: $0.backdropPath ?? "",                                                    movieName: $0.title,
+                                                    backdrop: $0.backdropPath ?? "",
+                                                    overview: $0.overview,                                                  movieName: $0.title,
                                                     releaseDate: $0.releaseDate.formatString())}
     }
     

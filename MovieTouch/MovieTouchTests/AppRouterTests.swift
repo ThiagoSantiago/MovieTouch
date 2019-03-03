@@ -15,12 +15,12 @@ class AppRoutertests: XCTestCase {
     
     override func setUp() {
         navigationController = UINavigationController()
-        router = AppRouter()
+        router = AppRouter.shared
         router.navigation = navigationController
     }
     
     func testWhenCallRouteToHomeThenNavigationPushReviewsViewController() {
-        router.routeToHome()
+        router.routeToUpcomingMovies()
         
         XCTAssertEqual(router.navigation, navigationController)
         XCTAssertTrue(

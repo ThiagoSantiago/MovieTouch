@@ -10,9 +10,11 @@ import UIKit
 
 class AppRouter {
     
+    static let shared = AppRouter()
+    
     var navigation: UINavigationController = UINavigationController()
     
-    func routeToHome() {
+    func routeToUpcomingMovies() {
         let presenter = UpcomingMoviesPresenter()
         let interactor = UpcomingMoviesInteractor(presenter: presenter)
         self.navigation.navigationBar.isHidden = true
@@ -20,5 +22,16 @@ class AppRouter {
         
         presenter.viewController = viewController
         self.navigation.pushViewController(viewController, animated: false)
+    }
+    
+    func routeToMovieDetails(viewModel: UpcomingMoviesViewModel) {
+        let viewController = MovieDetailsViewController()
+        viewController.movie = viewModel
+        
+        self.navigation.pushViewController(viewController, animated: false)
+    }
+    
+    func popViewController() {
+        self.navigation.popViewController(animated: true)
     }
 }

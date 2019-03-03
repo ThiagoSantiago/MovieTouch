@@ -13,7 +13,7 @@ protocol UpcomingMoviesProtocol: class {
     func hideFooterLoading()
     func displayLoadingView()
     func displayFooterLoading()
-    func displayError(_ message: String)
+    func displayError(_ message: String, hideButton: Bool)
     func displayUpcomingMovies(_ list: [UpcomingMoviesViewModel])
 }
 
@@ -69,6 +69,11 @@ class UpcomingMoviesViewController: BaseViewController {
         self.footer = FooterLoaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         self.tableView.tableFooterView = footer
     }
+    
+    //MARK: Actions
+    @IBAction func tryAgainButtonPressed(_ sender: Any) {
+        self.interactor?.getUpcomingMovies()
+    }
 }
 
 //MARK: UITableViewDelegate / UITableViewDataSource
@@ -91,6 +96,10 @@ extension UpcomingMoviesViewController: UITableViewDelegate, UITableViewDataSour
         if indexPath.row == self.tableViewData.count - 1 {
             self.interactor?.getNextUpcomingMovie()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        AppRouter.shared.routeToMovieDetails(viewModel: self.tableViewData[indexPath.row])
     }
 }
 
@@ -140,12 +149,14 @@ extension UpcomingMoviesViewController: UpcomingMoviesProtocol {
         footer?.show()
     }
     
-    func displayError(_ message: String) {
+    func displayError(_ message: String, hideButton: Bool) {
         self.auxView.isHidden = false
         self.tableView.isHidden = true
         
         self.auxImageView.image = UIImage(named: "error_icon")
         self.auxViewMessage.text = message
+        
+        self.tryAgainButton.isHidden = hideButton
     }
     
     func displayUpcomingMovies(_ list: [UpcomingMoviesViewModel]) {

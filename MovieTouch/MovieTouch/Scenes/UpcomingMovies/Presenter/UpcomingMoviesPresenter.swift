@@ -10,9 +10,9 @@ import Foundation
 
 
 protocol UpcomingMoviesPresenterProtocol {
-    func presentError(message: String)
     func closeLoadingView(isNextPage: Bool)
     func presentLoadingView(isNextPage: Bool)
+    func presentError(message: String, isSearching: Bool)
     func presentUpcomingMovies(movies: [UpcomingMoviesViewModel])
 }
 
@@ -38,9 +38,9 @@ class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
         
     }
     
-    func presentError(message: String) {
+    func presentError(message: String, isSearching: Bool) {
         DispatchQueue.main.async {
-            self.viewController?.displayError(message)
+            self.viewController?.displayError(message, hideButton: isSearching)
         }
         
     }
