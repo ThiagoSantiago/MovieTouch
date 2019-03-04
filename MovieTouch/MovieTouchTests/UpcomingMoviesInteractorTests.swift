@@ -9,7 +9,7 @@
 import XCTest
 @testable import MovieTouch
 
-class UpcomingMoviesPresernterTests: XCTestCase {
+class UpcomingMoviesInteractorTests: XCTestCase {
     var worker: UpcomingMoviesWorker!
     var requester: MovieTouchApiRequestMock!
     var interactor: UpcomingMoviesInteractor!
@@ -24,7 +24,7 @@ class UpcomingMoviesPresernterTests: XCTestCase {
         self.interactor = UpcomingMoviesInteractor(presenter: self.presenter, worker: self.worker)
     }
     
-    func testShouldGetListOfGenresWhenWorkerRetrunsError() {
+    func testShouldGetListOfGenresWhenWorkerReturnsError() {
         requester.isFailure = true
         interactor.getGenres()
         
@@ -33,7 +33,7 @@ class UpcomingMoviesPresernterTests: XCTestCase {
         XCTAssertTrue(presenter.errorWasPresented)
     }
     
-    func testShouldPresentListOfMoviesWhenWorkerRetrunsSuccess() {
+    func testShouldPresentListOfMoviesWhenWorkerReturnsSuccess() {
         requester.isFailure = false
         self.requester.jsonData = "genres"
         interactor.getGenres()
@@ -49,7 +49,7 @@ class UpcomingMoviesPresernterTests: XCTestCase {
         XCTAssertEqual(viewModel, presenter.viewModel?.first!)
     }
     
-    func testShouldPresentListOfMoviesWhenWorkerRetrunsError() {
+    func testShouldPresentListOfMoviesWhenWorkerReturnsError() {
         requester.isFailure = false
         self.requester.jsonData = "genres"
         interactor.getGenres()
@@ -64,7 +64,7 @@ class UpcomingMoviesPresernterTests: XCTestCase {
         XCTAssertTrue(presenter.errorWasPresented)
     }
     
-    func testShouldPresentNextPageOfListOfMoviesWhenWorkerRetrunsSuccess() {
+    func testShouldPresentNextPageOfListOfMoviesWhenWorkerReturnsSuccess() {
         requester.isFailure = false
         self.requester.jsonData = "genres"
         interactor.getGenres()
@@ -85,7 +85,7 @@ class UpcomingMoviesPresernterTests: XCTestCase {
     }
     
     
-    func testShouldPresentSearchedMoviesWhenWorkerRetrunsSuccess() {
+    func testShouldPresentSearchedMoviesWhenWorkerReturnsSuccess() {
         requester.isFailure = false
         self.requester.jsonData = "genres"
         interactor.getGenres()
@@ -105,7 +105,7 @@ class UpcomingMoviesPresernterTests: XCTestCase {
         XCTAssertEqual(viewModel, presenter.viewModel?.first!)
     }
     
-    func testShouldPresentNextSearchedMoviesWhenWorkerRetrunsSuccess() {
+    func testShouldPresentNextSearchedMoviesWhenWorkerReturnsSuccess() {
         requester.isFailure = false
         self.requester.jsonData = "genres"
         interactor.getGenres()
