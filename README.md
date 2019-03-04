@@ -59,6 +59,9 @@ _ [X] Present details of the movie like poster, title, genres, overview, release
 <pre>$ git clone https://github.com/ThiagoSantiago/MovieTouch.git
 $ cd MovieTouch
 $ git checkout development
+$ cd MovieTouch
 $ open MovieTouch.xcworkspace</pre>
 
-- Or just clone or download the code and run it.
+ and then run it.
+
+- Or just download the code and run it.
