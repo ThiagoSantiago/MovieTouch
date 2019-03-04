@@ -55,4 +55,12 @@ _ [X] Present details of the movie like poster, title, genres, overview, release
 
 ## Build Instructions
 
-- Just clone or download the code and run it.
+- If you are thinking in cloned the repository, follow this steps below: 
+<pre> 
+$ git clone https://github.com/ThiagoSantiago/MovieTouch.git
+$ cd MovieTouch
+$ git checkout development
+$ open MovieTouch.xcworkspace
+</pre>
+
+- Or just clone or download the code and run it.
