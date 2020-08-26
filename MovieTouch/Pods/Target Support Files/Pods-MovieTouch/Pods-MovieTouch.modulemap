@@ -1,0 +1,6 @@
+framework module Pods_MovieTouch {
+  umbrella header "Pods-MovieTouch-umbrella.h"
+
+  export *
+  module * { export * }
+}
